@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Renata Quintieri — Media & Production Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF8F4;
+    --accent: #C4622D;
+    --film-dark: #0E0C0A;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--film-dark);
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 60px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(196,98,45,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .client-greeting {
+    display: none;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(250,248,244,0.45);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(64px, 9vw, 110px);
+    font-weight: 600;
+    line-height: 0.92;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .hero-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(250,248,244,0.55);
+  }
+  .hero-tagline {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(250,248,244,0.55);
+    max-width: 440px;
+    line-height: 1.7;
+    margin-top: 32px;
+    margin-bottom: 48px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(250,248,244,0.65);
+    text-decoration: none;
+    padding: 14px 0;
+    font-size: 13px;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(250,248,244,0.2);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--cream); border-color: var(--cream); }
+  .lang-strip {
+    display: flex;
+    gap: 10px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+  }
+  .lang-pill {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border: 1px solid rgba(250,248,244,0.15);
+    color: rgba(250,248,244,0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .lang-pill.strong { border-color: var(--accent); color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(250,248,244,0.3);
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    max-width: 120px;
+  }
+
+  /* ── PITCH CARDS ── */
+  .pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .pitch-card {
+    background: rgba(255,255,255,0.03);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+  .pitch-card:hover { background: rgba(255,255,255,0.055); }
+  .pitch-card .icon { font-size: 22px; margin-bottom: 20px; color: var(--accent); }
+  .pitch-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .pitch-card p {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: rgba(250,248,244,0.55);
+    line-height: 1.75;
+  }
+
+  /* ── VIDEO WORKS ── */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .work-item { display: flex; flex-direction: column; }
+
+  /* Thumbnail + play button — clicking swaps to iframe */
+  .video-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #000;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .video-wrap iframe,
+  .video-wrap .thumb-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .thumb-layer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .thumb-layer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, opacity 0.3s;
+  }
+  .video-wrap:hover .thumb-layer img {
+    transform: scale(1.04);
+    opacity: 0.8;
+  }
+  .play-btn {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(14,12,10,0.25);
+    transition: background 0.2s;
+  }
+  .video-wrap:hover .play-btn { background: rgba(14,12,10,0.1); }
+  .play-circle {
+    width: 56px;
+    height: 56px;
+    border: 1.5px solid rgba(250,248,244,0.75);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    background: rgba(14,12,10,0.4);
+  }
+  .video-wrap:hover .play-circle {
+    border-color: var(--accent);
+    background: rgba(196,98,45,0.15);
+    transform: scale(1.1);
+  }
+  .play-circle svg {
+    fill: rgba(250,248,244,0.9);
+    width: 16px;
+    margin-left: 3px;
+  }
+
+  /* Instagram card */
+  .video-wrap.instagram-card {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+  .ig-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(14,12,10,0.45);
+    transition: background 0.2s;
+  }
+  .video-wrap.instagram-card:hover .ig-thumb-overlay { background: rgba(14,12,10,0.2); }
+  .ig-thumb-overlay i { font-size: 28px; color: var(--accent); }
+  .ig-thumb-overlay span {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(250,248,244,0.7);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* work meta label */
+  .work-meta {
+    padding: 16px 0 8px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin-top: 2px;
+  }
+  .work-meta strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 3px;
+  }
+  .work-meta span {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0.75;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: start;
+  }
+  .exp-row:first-child { padding-top: 0; }
+  .exp-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-date { font-size: 11px; font-weight: 400; color: rgba(250,248,244,0.3); line-height: 1.6; padding-top: 3px; }
+  .exp-place { font-size: 11px; color: var(--accent); opacity: 0.8; margin-top: 4px; }
+  .exp-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+  .exp-org { font-size: 12px; color: rgba(250,248,244,0.4); margin-bottom: 10px; }
+  .exp-desc { font-size: 13px; font-weight: 300; color: rgba(250,248,244,0.5); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  .footer-cta {
+    padding: 80px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .footer-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 600;
+    color: var(--cream);
+    max-width: 480px;
+    line-height: 1.15;
+  }
+  .contact-block { display: flex; flex-direction: column; gap: 10px; }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(250,248,244,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .contact-item:hover { color: var(--cream); }
+  .contact-item i { font-size: 15px; color: var(--accent); }
+
+  @media (max-width: 680px) {
+    .hero, section, .footer-cta { padding: 60px 24px; }
+    .pitch-grid, .works-grid { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; gap: 6px; }
+    .footer-cta { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">Media professional · São Paulo → Bordeaux → Bangkok → DÜSSELDORF (REGION)</div>
+  <div class="client-greeting" id="greeting"></div>
+  <h1 class="hero-name">Renata<br><em>Quintieri</em></h1>
+  <p class="hero-tagline">I bring video ideas to life — from concept to final cut — across advertising, film production, and digital content. I lead creative teams and manage full production cycles.</p>
+  <div class="hero-cta">
+    <a href="https://behance.net/renataquintieri" target="_blank" class="btn-primary">
+      <i class="ti ti-brand-behance" aria-hidden="true"></i>
+      View full portfolio on Behance
+    </a>
+    <a href="mailto:requinti@gmail.com" class="btn-ghost">requinti@gmail.com →</a>
+  </div>
+  <div class="lang-strip">
+    <div class="lang-pill strong">🇧🇷 Portuguese — Native</div>
+    <div class="lang-pill strong">🇫🇷 French — Bilingual</div>
+    <div class="lang-pill strong">🇬🇧 English — Bilingual</div>
+    <div class="lang-pill strong">🇪🇸 Spanish — Professional</div>
+    <div class="lang-pill strong">🇩🇪 German — Elementary</div>
+  </div>
+</section>
+
+<!-- PITCH -->
+<section>
+  <div class="section-label">What I bring to your business</div>
+  <div class="pitch-grid">
+    <div class="pitch-card">
+      <div class="icon"><i class="ti ti-movie" aria-hidden="true"></i></div>
+      <h3>Full-stack production</h3>
+      <p>From creative concept to post-production delivery. I've directed music videos, produced commercials, and managed entire content pipelines — no handholding needed at any stage.</p>
+    </div>
+    <div class="pitch-card">
+      <div class="icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+      <h3>Team leadership</h3>
+      <p>Led cross-functional creative teams of editors, designers and social media writers. I know how to keep a production moving, on deadline, without sacrificing quality.</p>
+    </div>
+    <div class="pitch-card">
+      <div class="icon"><i class="ti ti-world" aria-hidden="true"></i></div>
+      <h3>4 languages, 3 continents</h3>
+      <p>Bilingual in French and English. Native in Portuguese. Professional in Spanish. I can run briefs, client calls and on-set direction in the language that suits your market — no translator needed.</p>
+    </div>
+    <div class="pitch-card">
+      <div class="icon"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+      <h3>Digital-native content</h3>
+      <p>Managed online media and social content at scale. I understand how video performs across platforms — and how to adapt storytelling to each one without losing brand coherence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO WORKS -->
+<section>
+  <div class="section-label">Selected works</div>
+  <div class="works-grid">
+
+    <!-- WORK 1 — Music video (YouTube) -->
+    <!-- EDIT: replace Oclb_d72nNc with a new YouTube video ID to swap this video -->
+    <div class="work-item">
+      <div class="video-wrap" data-videoid="Oclb_d72nNc" onclick="loadYT(this)">
+        <div class="thumb-layer">
+          <!-- YouTube serves thumbnails at this public URL — no login needed -->
+          <img src="https://img.youtube.com/vi/Oclb_d72nNc/hqdefault.jpg" alt="Music video direction thumbnail" loading="lazy">
+        </div>
+        <div class="play-btn">
+          <div class="play-circle">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <strong>Music video direction</strong>
+        <span>Direction · Editing</span>
+      </div>
+    </div>
+
+    <!-- WORK 2 — Events (YouTube) -->
+    <!-- EDIT: replace DCYPehN-WBQ with a new YouTube video ID to swap this video -->
+    <div class="work-item">
+      <div class="video-wrap" data-videoid="DCYPehN-WBQ" onclick="loadYT(this)">
+        <div class="thumb-layer">
+          <img src="https://img.youtube.com/vi/DCYPehN-WBQ/hqdefault.jpg" alt="Events production thumbnail" loading="lazy">
+        </div>
+        <div class="play-btn">
+          <div class="play-circle">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <strong>Events</strong>
+        <span>Production · Direction · Editing</span>
+      </div>
+    </div>
+
+    <!-- WORK 3 — Podcast (YouTube) -->
+    <!-- EDIT: replace Opqw0t5YpLs with a new YouTube video ID to swap this video -->
+    <div class="work-item">
+      <div class="video-wrap" data-videoid="Opqw0t5YpLs" onclick="loadYT(this)">
+        <div class="thumb-layer">
+          <img src="https://img.youtube.com/vi/Opqw0t5YpLs/hqdefault.jpg" alt="Podcast production thumbnail" loading="lazy">
+        </div>
+        <div class="play-btn">
+          <div class="play-circle">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="work-meta">
+        <strong>Podcast production</strong>
+        <span>Production · Post-production</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+  <div class="section-label">Experience & education</div>
+  <div class="exp-row">
+    <div>
+      <div class="exp-date">Feb 2024 – Jan 2026</div>
+      <div class="exp-place">Bangkok, Thailand</div>
+    </div>
+    <div>
+      <div class="exp-title">Content Manager & Head of Production</div>
+      <div class="exp-org">Online Media Management</div>
+      <div class="exp-desc">Led creative team of editors, designers and social media writers. Managed production from video conception through post-production. Contributed to creative ideation and design on major projects.</div>
+    </div>
+  </div>
+  <div class="exp-row">
+    <div>
+      <div class="exp-date">Sep 2022 – Aug 2024</div>
+      <div class="exp-place">Bordeaux, France</div>
+    </div>
+    <div>
+      <div class="exp-title">Cinema & Audiovisual Instructor</div>
+      <div class="exp-org">High school — Film studies teacher</div>
+      <div class="exp-desc">Taught film studies and audiovisual production to high school students in France.</div>
+    </div>
+  </div>
+  <div class="exp-row">
+    <div>
+      <div class="exp-date">Sep 2015 – Aug 2019</div>
+      <div class="exp-place">São Paulo, Brazil</div>
+    </div>
+    <div>
+      <div class="exp-title">Video Producer & Editor</div>
+      <div class="exp-org">Content Creator & Social Media Admin</div>
+      <div class="exp-desc">Music video direction, advertising and YouTube video editing. Managed social media content strategy and production.</div>
+    </div>
+  </div>
+  <div class="exp-row">
+    <div>
+      <div class="exp-date">2019 – 2021</div>
+      <div class="exp-place">Bordeaux Montaigne</div>
+    </div>
+    <div>
+      <div class="exp-title">Master — Media Studies & Film</div>
+      <div class="exp-org">Université Bordeaux Montaigne</div>
+      <div class="exp-desc">Graduate studies in cinema and audiovisual media in France.</div>
+    </div>
+  </div>
+  <div class="exp-row">
+    <div>
+      <div class="exp-date">2013 – 2016</div>
+      <div class="exp-place">São Paulo, Brazil</div>
+    </div>
+    <div>
+      <div class="exp-title">Film & Media Studies</div>
+      <div class="exp-org">FAAP — Fundação Armando Alvares Penteado</div>
+      <div class="exp-desc">Studied Advertising and Cinema at one of Brazil's top creative universities.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-cta">
+  <div class="footer-headline">Let's make something worth watching.</div>
+  <div class="contact-block">
+    <a href="mailto:requinti@gmail.com" class="contact-item">
+      <i class="ti ti-mail" aria-hidden="true"></i>
+      requinti@gmail.com
+    </a>
+    <a href="tel:+4917714690191" class="contact-item">
+      <i class="ti ti-phone" aria-hidden="true"></i>
+      +49 151 2965 1391
+    </a>
+    <a href="https://behance.net/renataquintieri" target="_blank" class="contact-item">
+      <i class="ti ti-brand-behance" aria-hidden="true"></i>
+      behance.net/renataquintieri
+    </a>
+    <a href="Renata_Quintieri_CV.pdf" target="_blank" class="contact-item">
+      <i class="ti ti-file-cv" aria-hidden="true"></i>
+      Download CV
+    </a>
+  </div>
+</div>
+
+<script>
+  /* Clicking a thumbnail replaces it with the live YouTube iframe */
+  function loadYT(wrap) {
+    const id = wrap.getAttribute('data-videoid');
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    wrap.style.cursor = 'default';
+  }
+
+  /* Client greeting from URL e.g. yoursite.com?client=Netflix */
+  const params = new URLSearchParams(window.location.search);
+  const client = params.get('client');
+  if (client) {
+    const el = document.getElementById('greeting');
+    el.textContent = 'Prepared especially for ' + client;
+    el.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
